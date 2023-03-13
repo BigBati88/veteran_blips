@@ -1,2 +1,2 @@
 # veteran_blips
-Siman Blip készitő
+Sima Blip készitő
