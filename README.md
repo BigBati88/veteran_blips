@@ -1,11 +1,17 @@
-# veteran_blips
+# Premium Autohaus – ESX Legacy
 
-Egyszerű, önálló rollerbérlő resource **FiveM ESX Legacy** szerverekhez. A játékos egy bérlőpontnál felvesz egy `faggio` robogót, a bérleti díjat és a kauciót a beállított számláról fizeti, majd a kauciót a roller visszaadásakor visszakapja.
+Egyedi, NUI-alapú autókereskedés FiveM **ESX Legacy** szerverekhez. A játékosok a katalógusból kiválaszthatják az autót, **2 percig tesztvezethetik**, majd a járművet közvetlenül a bankszámlájukról vásárolhatják meg.
+
+## Függőségek
+
+- `es_extended` (ESX Legacy)
+- `oxmysql`
+- Az alap ESX `owned_vehicles` tábla (`owner`, `plate`, `vehicle` oszlopokkal)
 
 ## Telepítés
 
-1. Másold ezt a mappát a szervered `resources/[local]/veteran_blips` könyvtárába.
-2. Az `server.cfg` fájlban, az `es_extended` után add hozzá:
+1. Másold a resource-ot a szerver `resources/[local]/veteran_blips` mappájába.
+2. Az `server.cfg`-ben az `oxmysql` és az `es_extended` indítása után add hozzá:
    ```cfg
    ensure veteran_blips
    ```
@@ -13,14 +19,8 @@ Egyszerű, önálló rollerbérlő resource **FiveM ESX Legacy** szerverekhez. A
 
 ## Beállítás
 
-A `config.lua` fájlban módosítható:
-
-- `Config.Price`: a nem visszatérítendő bérleti díj.
-- `Config.Deposit`: a visszaadáskor visszafizetett kaució.
-- `Config.PaymentAccount`: `bank` vagy `money`.
-- `Config.VehicleModel`: a kiadott jármű modellneve.
-- `Config.Locations`: bérlőpontok, spawn helyek és blipek.
+A `config.lua` fájlban módosítható a kereskedés koordinátája, a vásárlási és tesztvezetési spawn, a tesztvezetés hossza (alapérték: `120` másodperc), valamint a teljes autókatalógus és az árak.
 
 ## Használat
 
-Menj egy térképen jelölt rollerbérlő ponthoz, majd nyomd meg az **E** gombot. A rollert bármelyik beállított bérlőpont közelében lehet visszaadni. Egyszerre egy aktív bérlés lehet játékosonként; kilépés esetén a kaució elveszik.
+Menj a térképen **Premium Autohaus** néven jelölt ponthoz, majd nyomd meg az **E** gombot. A „Tesztvezetés” egy időzített, 2 perces próbakört indít. A „Megveszem” gomb kizárólag a játékos **bank** számlájáról vonja le a konfigurált összeget, majd elmenti a járművet az `owned_vehicles` táblába.
